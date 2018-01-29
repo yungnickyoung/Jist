@@ -31,7 +31,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       if (this.readyState == 4 && this.status == 200) {
         summaryText = this.responseText;
         document.body.removeChild(div2);
-        testfunction(summaryText);
+        _update(summaryText);
       }
     };
 
@@ -41,10 +41,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   }
 });
 
-function testfunction(sumtxt) {
+function _update(sumtxt) {
   div1.id = 'jistDialog';
   div1.title = 'Jist! Summary';
-  if (sumtxt == "") {sumtxt = "Wtf";}
+  if (sumtxt == "") {sumtxt = "An error has occured.";}
   div1.innerHTML = sumtxt;
   var winWidth = $(window).width();
   var winHeight = $(window).height();
